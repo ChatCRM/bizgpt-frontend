@@ -29,6 +29,8 @@ export async function Header() {
   var user_role;
   session?.user ? (user_role = await getUserRole(session?.user?.id)) : (user_role = undefined)
   const BIZGPT_IFRAME_MODE = process.env.BIZGPT_IFRAME_MODE
+  const NEXT_PUBLIC_BIZGPT_FRONTEND_LANGUAGE = process.env.NEXT_PUBLIC_BIZGPT_FRONTEND_LANGUAGE!
+  const TEXT_DIRECTION = process.env.TEXT_DIRECTION!
   return (
     <header className="sticky top-0 z-50 flex h-16 w-full shrink-0 items-center justify-between border-b bg-gradient-to-b from-background/10 via-background/50 to-background/80 px-4 backdrop-blur-xl">
       <div className="flex items-center">
@@ -58,7 +60,7 @@ export async function Header() {
           )}
         </div>
       </div>
-      <div className="flex items-center justify-end space-x-2">
+      <div className={(TEXT_DIRECTION == 'RTL') && (NEXT_PUBLIC_BIZGPT_FRONTEND_LANGUAGE == 'FA') ? "hidden items-center justify-end space-x-2" : "flex items-center justify-end space-x-2"}>
         <LangDropDown />
       </div>
     </header>
