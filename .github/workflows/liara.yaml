@@ -3,7 +3,7 @@ name: Asia-Insurance-CD-Liara
 on:
   push:
     branches:
-      - main
+      - asia
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '20'
 
       - name: Install Liara CLI
         run: npm i -g @liara/cli@6
